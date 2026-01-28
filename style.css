@@ -1,0 +1,94 @@
+:root {
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --text: #222;
+  --accent: #007bff;
+}
+
+body.dark {
+  --bg: #121212;
+  --card: #1e1e1e;
+  --text: #f1f1f1;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  transition: 0.3s;
+}
+
+.app {
+  max-width: 420px;
+  margin: auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header h1 {
+  font-size: 1.4rem;
+}
+
+header button {
+  font-size: 1.2rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  text-align: center;
+}
+
+#startBtn {
+  padding: 12px 24px;
+  font-size: 1rem;
+  background: var(--accent);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.results {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.results div {
+  flex: 1;
+}
+
+.results h2 {
+  margin: 8px 0 0;
+}
+
+#status {
+  margin-top: 15px;
+  font-size: 0.9rem;
+  opacity: 0.8;
+}
+
+/* Mobile tweaks */
+@media (max-width: 480px) {
+  .results {
+    flex-direction: column;
+    gap: 15px;
+  }
+}

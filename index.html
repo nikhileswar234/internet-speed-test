@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Internet Speed Test Pro</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div class="app">
+    <header>
+      <h1>🌐 Internet Speed Test</h1>
+      <button id="darkToggle">🌙</button>
+    </header>
+
+    <div class="card">
+      <button id="startBtn">Start Test</button>
+
+      <div class="results">
+        <div>
+          <p>Download</p>
+          <h2 id="download">-- Mbps</h2>
+        </div>
+        <div>
+          <p>Upload</p>
+          <h2 id="upload">-- Mbps</h2>
+        </div>
+        <div>
+          <p>Ping</p>
+          <h2 id="ping">-- ms</h2>
+        </div>
+      </div>
+
+      <p id="status"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
