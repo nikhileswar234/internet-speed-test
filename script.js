@@ -1,31 +1,38 @@
 const BASE_URL = "https://speed-test-backend.onrender.com";
 
-async function testPing() {
-  const start = performance.now();
-  await fetch(`${BASE_URL}/ping`);
-  return Math.round(performance.now() - start);
+function startTest() {
+  const status = document.getElementById("status");
+  const result = document.getElementById("result");
+  const button = document.getElementById("startBtn");
+
+  result.innerText = "";
+  status.innerText = "⏳ Waking up server (first time may take ~30s)...";
+  button.disabled = true;
+  button.innerText = "Testing...";
+
+  const startTime = performance.now();
+
+  fetch(`${BASE_URL}/ping`)
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("Server error");
+      }
+      return response.json();
+    })
+    .then(data => {
+      const endTime = performance.now();
+      const latency = Math.round(endTime - startTime);
+
+      status.innerText = "✅ Test completed";
+      result.innerText = `Ping: ${data.ping} ms\nLatency: ${latency} ms`;
+    })
+    .catch(error => {
+      console.error(error);
+      status.innerText =
+        "❌ Server is starting. Please wait 30 seconds and try again.";
+    })
+    .finally(() => {
+      button.disabled = false;
+      button.innerText = "Start Test";
+    });
 }
-
-async function testDownload() {
-  const start = performance.now();
-  await fetch(`${BASE_URL}/download`, { cache: "no-store" });
-  const duration = (performance.now() - start) / 1000;
-  const bits = 2_000_000 * 8;
-  return (bits / duration / 1_000_000).toFixed(2);
-}
-
-async function testUpload() {
-  const data = new Blob([new ArrayBuffer(1_000_000)]);
-  const start = performance.now();
-
-  await fetch(`${BASE_URL}/upload`, {
-    method: "POST",
-    body: data,
-  });
-
-  const duration = (performance.now() - start) / 1000;
-  const bits = 1_000_000 * 8;
-  return (bits / duration / 1_000_000).toFixed(2);
-}
-
-
