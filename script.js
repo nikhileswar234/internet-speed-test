@@ -27,3 +27,4 @@ async function testUpload() {
   const bits = 1_000_000 * 8;
   return (bits / duration / 1_000_000).toFixed(2);
 }
+
