@@ -2,37 +2,77 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Internet Speed Test Pro</title>
-  <link rel="stylesheet" href="style.css"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Internet Speed Test</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .card {
+      background: #111827;
+      padding: 25px;
+      border-radius: 14px;
+      width: 90%;
+      max-width: 400px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    h1 {
+      margin-bottom: 10px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #22c55e;
+      color: #000;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    button:disabled {
+      background: #6b7280;
+      cursor: not-allowed;
+    }
+
+    #status {
+      margin-top: 15px;
+      font-size: 14px;
+      color: #cbd5f5;
+      min-height: 20px;
+    }
+
+    .result {
+      margin-top: 10px;
+      font-size: 18px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+  </style>
 </head>
+
 <body>
-  <div class="app">
-    <header>
-      <h1>🌐 Internet Speed Test</h1>
-      <button id="darkToggle">🌙</button>
-    </header>
+  <div class="card">
+    <h1>⚡ Internet Speed Test</h1>
+    <p>Test your network latency</p>
 
-    <div class="card">
-      <button id="startBtn">Start Test</button>
+    <button id="startBtn" onclick="startTest()">Start Test</button>
 
-      <div class="results">
-        <div>
-          <p>Download</p>
-          <h2 id="download">-- Mbps</h2>
-        </div>
-        <div>
-          <p>Upload</p>
-          <h2 id="upload">-- Mbps</h2>
-        </div>
-        <div>
-          <p>Ping</p>
-          <h2 id="ping">-- ms</h2>
-        </div>
-      </div>
-
-      <p id="status"></p>
-    </div>
+    <p id="status"></p>
+    <div class="result" id="result"></div>
   </div>
 
   <script src="script.js"></script>
